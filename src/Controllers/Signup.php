@@ -9,23 +9,28 @@
 namespace App\Controllers;
 
 use Http\{Response, Request};
+use App\Templates\Renderer;
 
 
 class Signup
 {
     protected $response;
     protected $request;
+    protected $renderer;
 
-    public function __construct(Request $request, Response $response)
+    public function __construct(Request $request, Response $response, Renderer $renderer)
     {
         $this->request = $request;
         $this->response = $response;
+        $this->renderer = $renderer;
     }
     
     public function index()
     {
-        $content = '<h4>Sign UP</h4>';
-        $content .= 'Hello ' . $this->request->getParameter('name', 'rkladko');
-        $this->response->setContent($content);
+        $data = [
+            'name' => $this->request->getParameter('name', 'Russ'),
+        ];
+        $html = $this->renderer->render('signup', $data);
+        $this->response->setContent($html);
     }
 }
