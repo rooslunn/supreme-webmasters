@@ -8,4 +8,5 @@
 
 return [
     ['GET', '/', ['App\Controllers\Signup', 'index']],
+    ['GET', '/{slug}', ['App\Controllers\Page', 'index']],
 ];
