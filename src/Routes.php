@@ -7,10 +7,5 @@
  */
 
 return [
-    ['GET', '/route1', function () {
-        echo 'Route-1';
-    }],
-    ['GET', '/route2', function () {
-        echo 'Route-2';
-    }],
+    ['GET', '/', ['App\Controllers\Signup', 'index']],
 ];
